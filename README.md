@@ -12,6 +12,8 @@ NatHack 2024
 
 - [Data Set](#DataSet)
 - [Website](#Website)
+- [Installation](#installation)
+
 
 ## Installation
 
