@@ -1,0 +1,103 @@
+:root {
+    --light-green: #d4e09b;
+    --ivory-green: #f6f4d2;
+    --grey-green: #94a985;
+}
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    background-color: var(--ivory-green);
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;
+}
+
+/* Style for the sign-up container */
+.login-container {
+    max-width: 600px;
+    margin: 120px auto;
+    padding: 30px;
+    border: 2px solid var(--grey-green);
+    border-radius: 10px;
+    background-color: var(--ivory-green);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Sign-Up form heading */
+.login-container h2 {
+    margin-bottom: 25px;
+    color: var(--grey-green);
+    font-size: 5rem;
+}
+
+/* Sign-Up form labels */
+.login-container label {
+    display: block;
+    margin-top: 20px;
+    color: var(--grey-green);
+    font-size: 2rem;
+}
+
+/* Sign-Up form inputs */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid var(--grey-green);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+/* Sign-Up button */
+.login-container button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--grey-green);
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: var(--grey-green);
+}
+
+/* Login link section below the sign-up form */
+.signup-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signup-container p {
+    font-size: 1.2rem;
+    color: var(--grey-green);
+}
+
+.signup-container button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--grey-green);
+    transition: background-color 0.3s;
+}
+
+.signup-container button:hover {
+    background-color: var(--grey-green);
+}
