@@ -5,7 +5,7 @@ NatHack 2024
 - Byungkook Jung: byungkookjung0725@gmail.com
 - Suyeon Kim: sopiakimsu@gmail.com
 - Shinto Kai: 
-- Gyurim Do: 
+- Gyurim Do: galaxy020422@gmail.com
 - Aditya: kaminska@ualberta.ca
 
 
