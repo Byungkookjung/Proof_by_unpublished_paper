@@ -10,7 +10,7 @@ NatHack 2024
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Data Set](#DataSet)
 - [Usage](#usage)
 - [Features](#features)
 - [Contributing](#contributing)
