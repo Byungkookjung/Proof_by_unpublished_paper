@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Website/css/tracker.css">
+    <title>History Tracker</title>
+</head>
+<body>
+    <div class="navbar">
+        <button onclick="location.href='main_page.html'">Back to Main Page</button>
+    </div>
+    <div class="tracker-container">
+        <h1>History Tracker</h1>
+        <form id="tracker-form">
+            <label for="info">Enter Event:</label>
+            <input type="text" id="info" name="info" placeholder="Type here..." required>
+            <button type="button" onclick="addInfo()">Add</button>
+        </form>
+        <h2>Tracked History:</h2>
+        <ul id="info-list"></ul>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-container">
+        <h2>Event Summary Chart</h2>
+        <canvas id="eventChart" width="400" height="200"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const eventData = {}; // Object to store event counts
+
+        // Function to add info to the list and update the chart
+        function addInfo() {
+            const input = document.getElementById("info");
+            const list = document.getElementById("info-list");
+
+            if (input.value.trim() !== "") {
+                // Add to the list
+                const listItem = document.createElement("li");
+                listItem.textContent = input.value;
+                list.appendChild(listItem);
+
+                // Update eventData
+                const event = input.value.trim();
+                eventData[event] = (eventData[event] || 0) + 1;
+
+                // Update the chart
+                updateChart();
+
+                // Clear the input field
+                input.value = "";
+            }
+        }
+
+        // Initialize the chart
+        const ctx = document.getElementById('eventChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar', // You can change this to 'pie', 'line', etc.
+            data: {
+                labels: [], // Event names
+                datasets: [{
+                    label: 'Event Count',
+                    data: [], // Event counts
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Function to update the chart
+        function updateChart() {
+            chart.data.labels = Object.keys(eventData);
+            chart.data.datasets[0].data = Object.values(eventData);
+            chart.update();
+        }
+    </script>
+</body>
+</html>
