@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Questionnaire</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="/Website/css/result_questionnaire.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Results Section -->
+        <div class="result-container">
+            <h1>Thank You!</h1>
+            <p>Your form has been submitted successfully.</p>
+            <h2>Summary of Your Answers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. What is your gender?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>2. What is your age?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>3. What is your degree level?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>4. What is your degree major?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>5. What is your current academic year?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>6. What is your CGPA (Cumulative Grade Point Average)?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>7. What is your residential status?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>8. Have you experienced campus discrimination?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>9. How many times are you engaged in sports monthly?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>10. What is your average sleep duration per day (in hours)?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>11. How satisfied are you with your studies? (Scale 1-10)</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>12. How do you rate your academic workload?</td>
+                        <td>Example Answer</td>
+                    </tr>
+                    <tr>
+                        <td>13. How much academic pressure do you feel? (Scale 1-10)</td>
+                        <td>Example Answer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Graph Section -->
+        <div class="graph-container">
+            <h1>Graph</h1>
+            <canvas id="exampleChart"></canvas>
+            <div class="login-message">If you would like to save your details and graph, please login.</div>
+            <button class="login-button" onclick="location.href='/login'">Login</button>
+        </div>
+    </div>
+
+    <script>
+        // Example Bar Chart using Chart.js
+        const ctx = document.getElementById('exampleChart').getContext('2d');
+        const exampleChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5'],
+                datasets: [{
+                    label: 'Example Data',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

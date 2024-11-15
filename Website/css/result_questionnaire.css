@@ -1,0 +1,96 @@
+:root {
+    --light-green: #d4e09b;
+    --ivory-green: #f6f4d2;
+    --grey-green: #94a985;
+}
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    margin: 0;
+    padding-top: 60px;
+    background-color: var(--ivory-green);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.result-container, .graph-container {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid var(--grey-green);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-container h1,
+.graph-container h1 {
+    color: var(--grey-green);
+    margin-bottom: 10px;
+}
+
+.result-container h2 {
+    color: var(--light-green);
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--grey-green);
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--ivory-green);
+    color: var(--grey-green);
+}
+
+.login-message {
+    margin-top: 20px;
+    color: var(--grey-green);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.login-button {
+    display: block;
+    margin: 10px auto 0;
+    padding: 10px 20px;
+    background-color: var(--light-green);
+    color: var(--grey-green);
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+.login-button:hover {
+    background-color: var(--ivory-green);
+}
