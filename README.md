@@ -21,6 +21,7 @@ NatHack 2024
 ## Installation
 
 1. Clone the repository:
+   ```bash
    git clone https://github.com/Byungkookjung/Proof_by_unpublished_paper.git
    
 ## Data Set
