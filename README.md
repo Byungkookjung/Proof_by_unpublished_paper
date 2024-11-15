@@ -26,14 +26,11 @@ NatHack 2024
    
 ## Data Set
 
-2. Data set
    USE:
    
 ## Website
 
-3. Website
 
 ## Contact
 
-4. Contact
 
