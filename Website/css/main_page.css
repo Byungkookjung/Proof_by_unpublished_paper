@@ -34,6 +34,7 @@ body {
     padding: 1rem 2rem;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Define height for navbar */
 }
 
 .navbar button {
@@ -52,7 +53,6 @@ body {
 
 /* Style for Login button */
 .login-button {
-    margin-left: auto;
     padding: 0.5rem 1.5rem;
     background-color: var(--light-green);
     color: var(--grey-green);
@@ -67,14 +67,58 @@ body {
     background-color: var(--ivory-green);
 }
 
-/* Main content layout with Flexbox */
+/* Positioning the title overlay absolutely */
+.title-overlay {
+    position: absolute;
+    top: 100px; /* Position it directly below the navbar */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.title-overlay h1 {
+    font-size: 2.5rem;
+    color: var(--grey-green);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Explanation Section Style */
+.explanation {
+    position: absolute;
+    top: 150px; /* Position it directly below the navbar */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px; /* Space between title and explanation */
+    text-align: center;
+    max-width: 800px; /* Limit the width for readability */
+    color: var(--grey-green);
+    font-size: 1.2rem;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Main Content Adjusted Position Below Title */
 .main-content {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    margin-top: 100px;
+    margin-top: 200px; /* Ensure this is enough space to fit the title */
+    position: relative;
 }
+
 
 /* Style for "Questionnaire" button */
 .main-content button {
