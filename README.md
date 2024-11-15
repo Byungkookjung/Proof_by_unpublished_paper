@@ -11,11 +11,7 @@ NatHack 2024
 ## Table of Contents
 
 - [Data Set](#DataSet)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Website](#Website)
 
 ## Installation
 
