@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Student Mental Health</title>
+    <title>Register - Step 2</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +25,7 @@
         }
         .form-group {
             margin-bottom: 15px;
+            text-align: left;
         }
         label {
             display: block;
@@ -38,28 +39,21 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007BFF;
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 10px;
         }
         button:hover {
-            background-color: #0056b3;
-        }
-        .register-link {
-            margin-top: 15px;
-            display: block;
-            color: #007BFF;
-            text-decoration: none;
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <form id="loginForm">
-            <h2>Login</h2>
+        <form id="accountForm">
+            <h2>Register - Step 2</h2>
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -68,30 +62,37 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">Create Account</button>
         </form>
-        <a href="register_info.html" class="register-link">Register New User</a>
     </div>
 
     <script>
-        // Handle login
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('accountForm').addEventListener('submit', function(event) {
             event.preventDefault();
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const storedUser = localStorage.getItem(username);
+            const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 
-            if (storedUser) {
-                const user = JSON.parse(storedUser);
-                if (user.password === password) {
-                    localStorage.setItem('loggedIn', 'true');
-                    alert('Login successful!');
-                    window.location.href = 'mainpage.html';
-                } else {
-                    alert('Incorrect password');
-                }
+            if (!userInfo) {
+                alert("Please complete the first registration step.");
+                window.location.href = 'register_info.html';
+                return;
+            }
+
+            const fullUserData = {
+                ...userInfo,
+                username,
+                password
+            };
+
+            if (localStorage.getItem(username)) {
+                alert("Username already exists! Choose a different one.");
             } else {
-                alert('User not found');
+                localStorage.setItem(username, JSON.stringify(fullUserData));
+                alert("Account created successfully!");
+                sessionStorage.removeItem('userInfo'); // Clear session storage after registration
+                window.location.href = 'login_page.html';
             }
         });
     </script>

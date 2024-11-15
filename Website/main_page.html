@@ -5,20 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Mental Health</title>
     <style>
-        /* Base styling */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
             background-color: #f0f8ff;
         }
-
-        /* Container styling */
         .container {
             text-align: center;
             background: #fff;
@@ -28,24 +24,18 @@
             max-width: 600px;
             width: 90%;
         }
-
-        /* Title styling */
         .title {
             font-size: 2.5em;
             font-weight: bold;
             color: #333;
             margin-bottom: 10px;
         }
-
-        /* Subtitle styling */
         .subtitle {
             font-size: 1.2em;
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
         }
-
-        /* Login Button styling */
         #loginButton, #userWelcome button {
             padding: 10px 20px;
             font-size: 1em;
@@ -54,33 +44,28 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
             transition: background-color 0.3s ease;
         }
-
         #loginButton:hover, #userWelcome button:hover {
             background-color: #0056b3;
-        }
-
-        /* Welcome message styling */
-        #userWelcome {
-            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="title">Student Mental Health</div>
-        <div class="subtitle">by the Proof by Unpublished Paper</div>
+        <div class="subtitle">by Proof by Unpublished Paper</div>
 
         <!-- General Info -->
         <div id="info">
-            <p>Here is some general information available to everyone.</p>
+            <p>Welcome to the Student Mental Health platform. Here is some general information available to everyone.</p>
         </div>
 
         <!-- Login and Welcome Display -->
-        <button id="loginButton">Login</button>
-        <div id="userWelcome">
-            <h2>Welcome Back, User!</h2>
+        <button id="loginButton" onclick="window.location.href = 'login_page.html';">Login</button>
+        <div id="userWelcome" style="display: none;">
+            <h2>Welcome Back!</h2>
             <button onclick="logout()">Logout</button>
         </div>
     </div>
@@ -90,10 +75,6 @@
         if (localStorage.getItem('loggedIn') === 'true') {
             document.getElementById('loginButton').style.display = 'none';
             document.getElementById('userWelcome').style.display = 'block';
-        } else {
-            document.getElementById('loginButton').addEventListener('click', function() {
-                window.location.href = 'login_page.html';
-            });
         }
 
         function logout() {
