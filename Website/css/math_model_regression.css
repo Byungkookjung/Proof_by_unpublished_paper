@@ -1,0 +1,79 @@
+:root {
+    --light-green: #d4e09b;
+    --ivory-green: #f6f4d2;
+    --grey-green: #94a985;
+}
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    margin: 0;
+    padding: 40px;
+    background-color: var(--ivory-green);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Main container layout */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Title container */
+.title-container {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid var(--grey-green);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title-container h1 {
+    color: var(--grey-green);
+    margin-bottom: 10px;
+}
+
+.title-container p {
+    color: var(--light-green);
+    font-size: 1.1rem;
+}
+
+/* Description container */
+.description-container {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid var(--grey-green);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description-container h2 {
+    color: var(--grey-green);
+    margin-bottom: 10px;
+}
+
+.description-container p, .description-container ul {
+    color: var(--grey-green);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.description-container ul {
+    padding-left: 20px;
+}
+
+.description-container ul li {
+    margin-bottom: 5px;
+}

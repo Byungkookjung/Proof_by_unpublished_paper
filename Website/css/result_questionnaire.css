@@ -17,25 +17,30 @@ body {
     padding-top: 60px;
     background-color: var(--ivory-green);
     display: flex;
-    justify-content: center; 
-    align-items: center;     
-    height: 100vh; 
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
 }
 
-/* Container for main content */
-.result-container {
+.main-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.result-container, .graph-container {
+    flex: 1;
     padding: 20px;
     background-color: white;
     border: 1px solid var(--grey-green);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 80%;
-    max-width: 600px;
 }
 
-/* Style for headings */
-.result-container h1 {
+.result-container h1,
+.graph-container h1 {
     color: var(--grey-green);
     margin-bottom: 10px;
 }
@@ -45,7 +50,6 @@ body {
     margin: 20px 0;
 }
 
-/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -66,18 +70,27 @@ th {
     color: var(--grey-green);
 }
 
-/* Link button styling */
-.result-container a {
-    display: inline-block;
+.login-message {
     margin-top: 20px;
+    color: var(--grey-green);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.login-button {
+    display: block;
+    margin: 10px auto 0;
     padding: 10px 20px;
     background-color: var(--light-green);
     color: var(--grey-green);
     text-decoration: none;
     border-radius: 5px;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 1rem;
 }
 
-.result-container a:hover {
+.login-button:hover {
     background-color: var(--ivory-green);
 }
