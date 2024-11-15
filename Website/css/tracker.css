@@ -1,0 +1,130 @@
+/* Root Variables for Colors */
+:root {
+    --light-green: #d4e09b;
+    --ivory-green: #f6f4d2;
+    --grey-green: #94a985;
+}
+
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Body Styling */
+body {
+    background-color: var(--ivory-green);
+    color: var(--grey-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--grey-green);
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.navbar button {
+    background: var(--light-green);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--grey-green);
+    transition: background-color 0.3s;
+}
+
+.navbar button:hover {
+    background-color: var(--grey-green);
+    color: var(--ivory-green);
+}
+
+/* Tracker Container */
+.tracker-container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    background-color: var(--light-green);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid var(--grey-green);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: var(--grey-green);
+    color: var(--ivory-green);
+}
+
+/* Event List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: var(--light-green);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Chart Container */
+.chart-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+canvas {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
