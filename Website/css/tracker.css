@@ -10,19 +10,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(235, 239, 235);
     font-family: 'Playfair Display', serif;
 }
 
 /* Body Styling */
 body {
-    background-color: var(--ivory-green);
+    margin: 0;
+    padding: 0;
+    background-color: rgb(235, 239, 235);
     color: var(--grey-green);
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
+    justify-content:center; 
     align-items: center;
-    padding: 20px;
-    height: 100vh;
+    text-align: center;
 }
 
 /* Top navigation bar */
