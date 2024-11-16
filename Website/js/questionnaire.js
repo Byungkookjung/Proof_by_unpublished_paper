@@ -1,35 +1,34 @@
-// Function to handle form submission and store data in localStorage
-function storeFormData(event) {
-    event.preventDefault(); // Prevent default form submission behavior
+import { db } from './firebaseConfig.js';
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+// Function to handle form submission and save data to Firestore
+function handleQuestionnaireForm(event) {
+    event.preventDefault(); // Prevent the default form submission
 
     // Collect form data
     const formData = {
-        gender: document.getElementById('gender').value,
-        age: document.getElementById('age').value,
-        degreeLevel: document.getElementById('degree_level').value,
-        degreeMajor: document.getElementById('degree_major').value,
-        academicYear: document.getElementById('academic_year').value,
-        cgpa: document.getElementById('cgpa').value,
-        residentialStatus: document.getElementById('residential_status').value,
-        campusDiscrimination: document.getElementById('campus_discrimination').value,
-        sportsEngagement: document.getElementById('sports_engagement').value,
-        averageSleep: document.getElementById('average_sleep').value,
-        studySatisfaction: document.getElementById('study_satisfaction').value,
-        academicWorkload: document.getElementById('academic_workload').value,
-        academicPressure: document.getElementById('academic_pressure').value,
+        sleep_quality: document.getElementById('sleep_quality').value,
+        academic_performance: document.getElementById('academic_performance').value,
+        study_load: document.getElementById('study_load').value,
+        extracurricular_activities: document.getElementById('extracurricular_activities').value
     };
 
-    // Store data in localStorage
-    localStorage.setItem('formData', JSON.stringify(formData));
-
-    // Redirect to result page
-    window.location.href = '/Website/html/result_questionnaire.html';
+    // Save form data to Firestore
+    addDoc(collection(db, "questionnaireResponses"), formData)
+        .then(() => {
+            alert('Data submitted successfully!');
+            window.location.href = '/Website/html/result_questionnaire.html'; // Redirect to result page
+        })
+        .catch((error) => {
+            console.error('Error saving data:', error);
+            alert('Error submitting data. Please try again.');
+        });
 }
 
-// Add event listener to form
+// Add event listener to form on page load
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form');
+    const form = document.getElementById('questionnaireForm');
     if (form) {
-        form.addEventListener('submit', storeFormData);
+        form.addEventListener('submit', handleQuestionnaireForm);
     }
 });
