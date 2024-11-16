@@ -22,6 +22,8 @@ body {
     min-height: 100vh;
 }
 
+
+/* Top navigation bar */
 .navbar {
     position: fixed;
     top: 0;
@@ -49,6 +51,7 @@ body {
 .navbar button:hover {
     background-color: var(--light-green);
 }
+
 
 .main-container {
     display: flex;
@@ -122,3 +125,4 @@ th {
 .login-button:hover {
     background-color: var(--ivory-green);
 }
+
