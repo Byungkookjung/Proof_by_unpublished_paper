@@ -1,5 +1,9 @@
-// Function to handle form submission and store data (or send data to Firebase if needed)
-function handleQuestionnaireForm(event) {
+// Import necessary Firebase functions
+import { db } from './firebaseConfig.js'; // Import the initialized Firestore instance
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+// Function to handle form submission and store data in Firestore
+async function handleQuestionnaireForm(event) {
     event.preventDefault(); // Prevent default form submission
 
     // Collect form data
@@ -12,14 +16,14 @@ function handleQuestionnaireForm(event) {
 
     console.log('Collected form data:', formData); // Debugging output
 
-    // Example storage to localStorage (or you can send it to Firebase)
     try {
-        localStorage.setItem('questionnaireFormData', JSON.stringify(formData));
-        alert('Form submitted successfully! Data saved.');
+        // Store formData in Firestore
+        await addDoc(collection(db, "questionnaireResponses"), formData);
+        alert('Form submitted successfully! Data saved to Firebase.');
         // Redirect or perform another action after saving
         window.location.href = 'result_questionnaire.html'; // Change this path as needed
     } catch (error) {
-        console.error('Error saving form data:', error);
+        console.error('Error saving form data to Firebase:', error);
         alert('Error during form submission. Please try again.');
     }
 }
