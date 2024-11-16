@@ -13,15 +13,44 @@
 }
 
 body {
-    margin: 0;
-    padding: 40px;
     background-color: var(--ivory-green);
     display: flex;
+    background-color: rgb(235, 239, 235);
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    align-items: center;
+    flex-direction: column; /* Ensure stacking direction */
+    padding-top: 80px; /* Add padding equal to the navbar's height */
+    height: 100vh;
 }
 
+/* Top navigation bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--grey-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Define height for navbar */
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: var(--light-green);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbar button:hover {
+    background-color: var(--light-green);
+}
 /* Main container layout */
 .main-container {
     display: flex;

@@ -10,7 +10,7 @@
 
 body {
     font-family: Playfair Display;
-    background-color: #f4f4f4;
+    background-color: rgb(235, 239, 235);    
     margin: 0;
     padding: 0;
     display: flex;

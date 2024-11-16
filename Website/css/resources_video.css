@@ -7,12 +7,18 @@
     --darker-green: rgb(14, 95, 28);
     --dark-green: rgb(68, 125, 68);
 }
-
-body {
-    font-family: Playfair Display;
+/* Basic reset */
+* {
     margin: 0;
     padding: 0;
-    background-color: white;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(235, 239, 235);
     color: var(--grey-green);
     line-height: 1.6;
     display: flex;
@@ -20,21 +26,47 @@ body {
     justify-content:center; 
     align-items: center;
     text-align: center;
+}
 
+/* Top navigation bar */
+.navbar {
+    font-family: Playfair Display;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--grey-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Define height for navbar */
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: var(--light-green);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbar button:hover {
+    background-color: var(--light-green);
 }
 
 h1, h2, h3{
     color: var( --dark-green);
 }
 .intro h1 {
-    /* background-color: purple; */
-    margin-bottom: 0px;
+    margin-top: 60px;
     padding: 0px;
     font-size: 40px;
     
 }
 .intro p {
-    /* background-color: blue; */
     max-width: 600px;
     font-size: small;
     margin-top: 0px;
@@ -42,7 +74,6 @@ h1, h2, h3{
 }
 
 .videos {
-    /* background-color: var(--ivory-green); */
     border: 2px solid var(--grey-green);
 }
 iframe {

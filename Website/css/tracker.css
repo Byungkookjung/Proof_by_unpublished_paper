@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgb(235, 239, 235);
     font-family: 'Playfair Display', serif;
 }
 
@@ -24,42 +25,33 @@ body {
     height: 100vh;
 }
 
-/* Navbar Styling */
+/* Top navigation bar */
 .navbar {
+    position: fixed;
+    top: 0;
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
     background-color: var(--grey-green);
-    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    height: 60px; /* Define height for navbar */
 }
 
 .navbar button {
-    background: var(--light-green);
+    background: none;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+    color: var(--light-green);
     font-size: 1rem;
-    color: var(--grey-green);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .navbar button:hover {
-    background-color: var(--grey-green);
-    color: var(--ivory-green);
-}
-
-/* Tracker Container */
-.tracker-container {
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
     background-color: var(--light-green);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Styling */
@@ -116,13 +108,12 @@ li {
 
 /* Chart Container */
 .chart-container {
-    margin-top: 30px;
+    margin-top: 60px;
     text-align: center;
 }
 
 canvas {
     max-width: 100%;
-    margin: 0 auto;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
