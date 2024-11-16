@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result Questionnaire</title>
     <link rel="stylesheet" href="/Website/css/result_questionnaire.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="main-container">
         <div class="result-container">
-            <h1>Thank You!</h1>
+            <h1>Thank You!
             <p>Your form has been submitted successfully.</p>
             <h2>Summary of Your Answers</h2>
             <table>
@@ -26,12 +25,9 @@
             </table>
         </div>
 
-        <!-- Graph Section -->
+        <!-- Graph Section (Empty Box Retained) -->
         <div class="graph-container">
             <h1>Graph</h1>
-            <canvas id="exampleChart"></canvas>
-            <div class="login-message">If you would like to save your details and graph, please login.</div>
-            <button class="login-button" onclick="location.href='login.html'">Login</button>
         </div>
     </div>
 
@@ -43,35 +39,17 @@
         const resultTableBody = document.getElementById('resultTableBody');
         if (formData) {
             const questions = [
-                "1. What is your gender?",
-                "2. What is your age?",
-                "3. What is your degree level?",
-                "4. What is your degree major?",
-                "5. What is your current academic year?",
-                "6. What is your CGPA (Cumulative Grade Point Average)?",
-                "7. What is your residential status?",
-                "8. Have you experienced campus discrimination?",
-                "9. How many times are you engaged in sports monthly?",
-                "10. What is your average sleep duration per day (in hours)?",
-                "11. How satisfied are you with your studies? (Scale 1-10)",
-                "12. How do you rate your academic workload?",
-                "13. How much academic pressure do you feel? (Scale 1-10)"
+                "1. How would you rate your sleep quality? (1 - Worst, 5 - Best)",
+                "2. How would you rate your academic performance? (1 - Worst, 5 - Best)",
+                "3. How would you rate your study load? (1 - Worst, 5 - Best)",
+                "4. How would you rate your engagement in extracurricular activities? (1 - Worst, 5 - Best)"
             ];
 
             const answers = [
-                formData.gender,
-                formData.age,
-                formData.degreeLevel,
-                formData.degreeMajor,
-                formData.academicYear,
-                formData.cgpa,
-                formData.residentialStatus,
-                formData.campusDiscrimination,
-                formData.sportsEngagement,
-                formData.averageSleep,
-                formData.studySatisfaction,
-                formData.academicWorkload,
-                formData.academicPressure
+                formData.sleep_quality,
+                formData.academic_performance,
+                formData.study_load,
+                formData.extracurricular_activities
             ];
 
             questions.forEach((question, index) => {
@@ -84,30 +62,10 @@
                 row.appendChild(answerCell);
                 resultTableBody.appendChild(row);
             });
+        } else {
+            // Handle case where no data is available
+            document.querySelector('.result-container').innerHTML = "<p>No data found. Please fill out the questionnaire first.</p>";
         }
-
-        // Example Bar Chart using Chart.js
-        const ctx = document.getElementById('exampleChart').getContext('2d');
-        const exampleChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5'],
-                datasets: [{
-                    label: 'Example Data',
-                    data: [12, 19, 3, 5, 2],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
     </script>
     <div class="navbar">
         <button onclick="location.href='main_page.html'">Proof by Unpublished Paper</button>
