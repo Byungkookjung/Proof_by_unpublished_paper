@@ -6,7 +6,6 @@
 
 /* Basic reset */
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Playfair Display', serif;
@@ -23,14 +22,13 @@ body {
     height: 100vh;
 }
 
-/* Top navigation bar */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: var(--grey-green);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between left and right items */
     align-items: center;
     padding: 1rem 2rem;
     z-index: 1000;
@@ -38,38 +36,58 @@ body {
     height: 60px; /* Define height for navbar */
 }
 
-.navbar button {
+.navbar .no-hover {
+    background: none;
+    border: none;
+    color: var(--light-green);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: default; /* Arrow cursor to indicate no interaction */
+}
+
+.navbar .no-hover:hover {
+    background-color: initial; /* No background change on hover */
+    color: var(--light-green); /* Retain the default color */
+}
+
+.navbar .right-buttons {
+    display: flex;
+    justify-content: flex-end; /* Push buttons to the right */
+    gap: 1rem; /* Space between buttons */
+}
+
+.navbar .right-buttons button {
     background: none;
     border: none;
     color: var(--light-green);
     font-size: 1rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar button:hover {
-    background-color: var(--light-green);
+.navbar .right-buttons button:hover {
+    background-color: var(--light-green); /* Change background on hover */
+    color:var(--grey-green);
 }
 
-/* Style for Login button */
-.login-button {
-    padding: 0.5rem 1.5rem;
+/* Login button styling */
+.navbar .right-buttons .login-button {
     background-color: var(--light-green);
     color: var(--grey-green);
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    border-radius: 5px;
+    border-radius: 500px;
+    padding: 0.5rem 1.5rem;
 }
 
-.login-button:hover {
+.navbar .right-buttons .login-button:hover {
     background-color: var(--ivory-green);
+    color:var(--grey-green);
 }
+
 
 /* Positioning the title overlay absolutely */
 .title-overlay {
+    margin-bottom: 100px;
     position: absolute;
     top: 100px; /* Position it directly below the navbar */
     left: 50%;
@@ -92,9 +110,7 @@ body {
 /* Explanation Section Style */
 .explanation {
     position: absolute;
-    top: 150px; /* Position it directly below the navbar */
-    left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    top: 200px; /* Position it directly below the navbar */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -115,8 +131,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    margin-top: 200px; /* Ensure this is enough space to fit the title */
     position: relative;
 }
 
@@ -138,15 +152,6 @@ body {
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-
-/* Style for the right-side image */
-.right-image {
-    width: 600px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .navbar {
@@ -158,10 +163,5 @@ body {
         flex-direction: column;
         gap: 20px;
         margin-top: 50px;
-    }
-
-    .right-image {
-        width: 100%;
-        max-width: 400px;
     }
 }

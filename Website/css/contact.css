@@ -25,34 +25,68 @@ body {
     align-items: center;
     text-align: center;
 }
-
-/* Top navigation bar */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: var(--grey-green);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between left and right items */
     align-items: center;
+    padding: 1rem 2rem;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 60px; /* Define height for navbar */
 }
 
-.navbar button {
+.navbar .no-hover {
+    background: none;
+    border: none;
+    color: var(--light-green);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: default; /* Arrow cursor to indicate no interaction */
+}
+
+.navbar .no-hover:hover {
+    background-color: initial; /* No background change on hover */
+    color: var(--light-green); /* Retain the default color */
+}
+
+.navbar .right-buttons {
+    display: flex;
+    justify-content: flex-end; /* Push buttons to the right */
+    gap: 1rem; /* Space between buttons */
+}
+
+.navbar .right-buttons button {
     background: none;
     border: none;
     color: var(--light-green);
     font-size: 1rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar button:hover {
-    background-color: var(--light-green);
+.navbar .right-buttons button:hover {
+    background-color: var(--light-green); /* Change background on hover */
+    color:var(--grey-green);
 }
+
+/* Login button styling */
+.navbar .right-buttons .login-button {
+    background-color: var(--light-green);
+    color: var(--grey-green);
+    border-radius: 500px;
+    padding: 0.5rem 1.5rem;
+}
+
+.navbar .right-buttons .login-button:hover {
+    background-color: var(--ivory-green);
+    color:var(--grey-green);
+}
+
 h1 {
     margin-top: 80px;
     text-align: center;
@@ -63,10 +97,9 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
     grid-template-rows: repeat(2, auto); /* Creates 2 rows with automatic height */
-    gap: 2px; /* Adds spacing between grid items (optional) */
+    gap: 20px; /* Adds spacing between grid items (optional) */
     justify-items: center; /* Centers items horizontally within their cells */
     align-items: center; /* Centers items vertically within their cells */
-    
 }
 .contact-card {
     background-color: white;
@@ -112,7 +145,7 @@ h1 {
 #form-paper {
     background-color: white;
     padding: 20px;
-    margin: 20px auto;
+    margin: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
@@ -122,6 +155,7 @@ h1 {
     color: var(--grey-green);
     text-align: center;
     margin-bottom: 10px;
+    margin-top: auto;
 }
 
 #form-paper .light-gray-text {
