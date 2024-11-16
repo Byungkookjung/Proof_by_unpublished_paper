@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result Questionnaire</title>
     <link rel="stylesheet" href="/Website/css/result_questionnaire.css">
+    <script src="/Website/js/result_questionnaire.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="main-container">
@@ -27,46 +29,44 @@
 
         <!-- Graph Section (Empty Box Retained) -->
         <div class="graph-container">
-            <h1>Graph</h1>
+
+            <div class="progress-container">
+                <h2 id="progressTitle">Headache Percentage</h2>
+                <svg class="progress-ring" width="120" height="120">
+                    <!-- Background circle -->
+                    <circle class="progress-ring__background" stroke="light-grey" stroke-width="10" fill="transparent" r="50" cx="60" cy="60"/>
+                    <!-- Foreground progress circle -->
+                    <circle class="progress-ring__circle" stroke="red" stroke-width="10" fill="transparent" r="50" cx="60" cy="60"/>
+                </svg>
+                <div class="progress-value" id="progressValue">0%</div>
+                <p id="progressDescription">This is your estimated percentage that you will get headache in this week.</p> <!-- Description below the progress bar -->
+            </div>
+
+            <!-- Bar Graph Container -->
+            <div class="stress-level-container">
+                <h3 id="stressTitle">Stress Level Estimator</h3> <!-- Title above the progress bar -->
+                <div class="stress-level-bar">
+                    <div id="stressLevelIndicator" class="stress-level-indicator"></div>
+                    <div class="stress-level-block" style="left: 20%;"></div> <!-- Borders for blocks -->
+                    <div class="stress-level-block" style="left: 40%;"></div>
+                    <div class="stress-level-block" style="left: 60%;"></div>
+                    <div class="stress-level-block" style="left: 80%;"></div>
+                </div>
+                <p id="stressLevelText">Stress Level: 0/5</p> <!-- This will be updated dynamically -->
+                <p id="stressDescription">The stress level is measured on a scale from 1 to 5, with 1 indicating minimal stress and 5 indicating high stress.</p> <!-- Description below the progress bar -->
+            </div>
+            
+            
+            
+            
+            
         </div>
+        
+        
+        
     </div>
 
-    <script>
-        // Retrieve data from localStorage
-        const formData = JSON.parse(localStorage.getItem('formData'));
-
-        // Populate table with user data
-        const resultTableBody = document.getElementById('resultTableBody');
-        if (formData) {
-            const questions = [
-                "1. How would you rate your sleep quality? (1 - Worst, 5 - Best)",
-                "2. How would you rate your academic performance? (1 - Worst, 5 - Best)",
-                "3. How would you rate your study load? (1 - Worst, 5 - Best)",
-                "4. How would you rate your engagement in extracurricular activities? (1 - Worst, 5 - Best)"
-            ];
-
-            const answers = [
-                formData.sleep_quality,
-                formData.academic_performance,
-                formData.study_load,
-                formData.extracurricular_activities
-            ];
-
-            questions.forEach((question, index) => {
-                const row = document.createElement('tr');
-                const questionCell = document.createElement('td');
-                questionCell.textContent = question;
-                const answerCell = document.createElement('td');
-                answerCell.textContent = answers[index] || 'No answer';
-                row.appendChild(questionCell);
-                row.appendChild(answerCell);
-                resultTableBody.appendChild(row);
-            });
-        } else {
-            // Handle case where no data is available
-            document.querySelector('.result-container').innerHTML = "<p>No data found. Please fill out the questionnaire first.</p>";
-        }
-    </script>
+    
     <div class="navbar">
         <button onclick="location.href='main_page.html'">Proof by Unpublished Paper</button>
         <button onclick="location.href='/Website/html/resources_video.html'">Resource</button>
