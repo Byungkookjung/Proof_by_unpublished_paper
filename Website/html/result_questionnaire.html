@@ -66,46 +66,6 @@
         
     </div>
 
-<<<<<<< HEAD
-    
-=======
-    <script>
-        // Retrieve data from localStorage
-        const formData = JSON.parse(localStorage.getItem('formData'));
-
-        // Populate table with user data
-        const resultTableBody = document.getElementById('resultTableBody');
-        if (formData) {
-            const questions = [
-                "1. How would you rate your sleep quality? (1 - Worst, 5 - Best)",
-                "2. How would you rate your academic performance? (1 - Worst, 5 - Best)",
-                "3. How would you rate your study load? (1 - Worst, 5 - Best)",
-                "4. How would you rate your engagement in extracurricular activities? (1 - Worst, 5 - Best)"
-            ];
-
-            const answers = [
-                formData.sleep_quality,
-                formData.academic_performance,
-                formData.study_load,    
-                formData.extracurricular_activities
-            ];
-
-            questions.forEach((question, index) => {
-                const row = document.createElement('tr');
-                const questionCell = document.createElement('td');
-                questionCell.textContent = question;
-                const answerCell = document.createElement('td');
-                answerCell.textContent = answers[index] || 'No answer';
-                row.appendChild(questionCell);
-                row.appendChild(answerCell);
-                resultTableBody.appendChild(row);
-            });
-        } else {
-            // Handle case where no data is available
-            document.querySelector('.result-container').innerHTML = "<p>No data found. Please fill out the questionnaire first.</p>";
-        }
-    </script>
->>>>>>> 7e48dceca47948f44cd15a8771b55ccf2d95282f
     <div class="navbar">
         <button class="no-hover">Proof by Unpublished Paper</button>
         <div class="right-buttons">
