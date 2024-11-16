@@ -28,7 +28,7 @@ body {
     width: 100%;
     background-color: var(--grey-green);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between left and right items */
     align-items: center;
     padding: 1rem 2rem;
     z-index: 1000;
@@ -36,18 +36,52 @@ body {
     height: 60px; /* Define height for navbar */
 }
 
-.navbar button {
+.navbar .no-hover {
+    background: none;
+    border: none;
+    color: var(--light-green);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: default; /* Arrow cursor to indicate no interaction */
+}
+
+.navbar .no-hover:hover {
+    background-color: initial; /* No background change on hover */
+    color: var(--light-green); /* Retain the default color */
+}
+
+.navbar .right-buttons {
+    display: flex;
+    justify-content: flex-end; /* Push buttons to the right */
+    gap: 1rem; /* Space between buttons */
+}
+
+.navbar .right-buttons button {
     background: none;
     border: none;
     color: var(--light-green);
     font-size: 1rem;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.navbar button:hover {
+.navbar .right-buttons button:hover {
+    background-color: var(--light-green); /* Change background on hover */
+    color:var(--grey-green);
+}
+
+/* Login button styling */
+.navbar .right-buttons .login-button {
     background-color: var(--light-green);
+    color: var(--grey-green);
+    border-radius: 500px;
+    padding: 0.5rem 1.5rem;
+}
+
+.navbar .right-buttons .login-button:hover {
+    background-color: var(--ivory-green);
+    color:var(--grey-green);
 }
 
 /* Questionnaire container */
