@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result Questionnaire</title>
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="/Website/css/result_questionnaire.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="main-container">
-        <!-- Results Section -->
         <div class="result-container">
             <h1>Thank You!</h1>
             <p>Your form has been submitted successfully.</p>
@@ -22,59 +20,8 @@
                         <th>Answer</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1. What is your gender?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>2. What is your age?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>3. What is your degree level?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>4. What is your degree major?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>5. What is your current academic year?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>6. What is your CGPA (Cumulative Grade Point Average)?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>7. What is your residential status?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>8. Have you experienced campus discrimination?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>9. How many times are you engaged in sports monthly?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>10. What is your average sleep duration per day (in hours)?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>11. How satisfied are you with your studies? (Scale 1-10)</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>12. How do you rate your academic workload?</td>
-                        <td>Example Answer</td>
-                    </tr>
-                    <tr>
-                        <td>13. How much academic pressure do you feel? (Scale 1-10)</td>
-                        <td>Example Answer</td>
-                    </tr>
+                <tbody id="resultTableBody">
+                    <!-- Data will be populated here dynamically -->
                 </tbody>
             </table>
         </div>
@@ -89,6 +36,56 @@
     </div>
 
     <script>
+        // Retrieve data from localStorage
+        const formData = JSON.parse(localStorage.getItem('formData'));
+
+        // Populate table with user data
+        const resultTableBody = document.getElementById('resultTableBody');
+        if (formData) {
+            const questions = [
+                "1. What is your gender?",
+                "2. What is your age?",
+                "3. What is your degree level?",
+                "4. What is your degree major?",
+                "5. What is your current academic year?",
+                "6. What is your CGPA (Cumulative Grade Point Average)?",
+                "7. What is your residential status?",
+                "8. Have you experienced campus discrimination?",
+                "9. How many times are you engaged in sports monthly?",
+                "10. What is your average sleep duration per day (in hours)?",
+                "11. How satisfied are you with your studies? (Scale 1-10)",
+                "12. How do you rate your academic workload?",
+                "13. How much academic pressure do you feel? (Scale 1-10)"
+            ];
+
+            const answers = [
+                formData.gender,
+                formData.age,
+                formData.degreeLevel,
+                formData.degreeMajor,
+                formData.academicYear,
+                formData.cgpa,
+                formData.residentialStatus,
+                formData.campusDiscrimination,
+                formData.sportsEngagement,
+                formData.averageSleep,
+                formData.studySatisfaction,
+                formData.academicWorkload,
+                formData.academicPressure
+            ];
+
+            questions.forEach((question, index) => {
+                const row = document.createElement('tr');
+                const questionCell = document.createElement('td');
+                questionCell.textContent = question;
+                const answerCell = document.createElement('td');
+                answerCell.textContent = answers[index] || 'No answer';
+                row.appendChild(questionCell);
+                row.appendChild(answerCell);
+                resultTableBody.appendChild(row);
+            });
+        }
+
         // Example Bar Chart using Chart.js
         const ctx = document.getElementById('exampleChart').getContext('2d');
         const exampleChart = new Chart(ctx, {
