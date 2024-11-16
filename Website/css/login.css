@@ -16,6 +16,7 @@ body {
     background-color: var(--ivory-green);
     display: flex;
     justify-content: center;
+    background-color: rgb(235, 239, 235);
     align-items: center;
     flex-direction: column; /* Ensure stacking direction */
     padding-top: 80px; /* Add padding equal to the navbar's height */

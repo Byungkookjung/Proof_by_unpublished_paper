@@ -15,11 +15,39 @@
 body {
     margin: 0;
     padding-top: 60px;
-    background-color: var(--ivory-green);
+    background-color: rgb(235, 239, 235);
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--grey-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Define height for navbar */
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: var(--light-green);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbar button:hover {
+    background-color: var(--light-green);
 }
 
 /* Questionnaire container */
@@ -52,7 +80,7 @@ form {
 
 .question-box label {
     color: var(--grey-green);
-    font-size: 1rem;
+    font-size:2rem;
     margin-bottom: 0.5rem;
     display: block;
 }
