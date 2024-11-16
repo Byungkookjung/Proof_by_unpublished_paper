@@ -1,9 +1,6 @@
-import { db } from './firebaseConfig.js';
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
-// Function to handle form submission and save data to Firestore
+// Function to handle form submission and store data (or send data to Firebase if needed)
 function handleQuestionnaireForm(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent default form submission
 
     // Collect form data
     const formData = {
@@ -13,22 +10,26 @@ function handleQuestionnaireForm(event) {
         extracurricular_activities: document.getElementById('extracurricular_activities').value
     };
 
-    // Save form data to Firestore
-    addDoc(collection(db, "questionnaireResponses"), formData)
-        .then(() => {
-            alert('Data submitted successfully!');
-            window.location.href = '/Website/html/result_questionnaire.html'; // Redirect to result page
-        })
-        .catch((error) => {
-            console.error('Error saving data:', error);
-            alert('Error submitting data. Please try again.');
-        });
+    console.log('Collected form data:', formData); // Debugging output
+
+    // Example storage to localStorage (or you can send it to Firebase)
+    try {
+        localStorage.setItem('questionnaireFormData', JSON.stringify(formData));
+        alert('Form submitted successfully! Data saved.');
+        // Redirect or perform another action after saving
+        window.location.href = 'result_questionnaire.html'; // Change this path as needed
+    } catch (error) {
+        console.error('Error saving form data:', error);
+        alert('Error during form submission. Please try again.');
+    }
 }
 
-// Add event listener to form on page load
+// Add event listener to the form
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('questionnaireForm');
     if (form) {
         form.addEventListener('submit', handleQuestionnaireForm);
+    } else {
+        console.error('Questionnaire form not found.');
     }
 });
