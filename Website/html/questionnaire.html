@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Website/css/questionnaire.css">
-    <!-- Include your external JS file -->
     <script type="module" src="/Website/js/questionnaire.js" defer></script>
     <title>Questionnaire</title>
 </head>
@@ -12,199 +11,83 @@
     <!-- Questionnaire Form -->
     <div class="questionnaire-container">
         <h1>Questionnaire</h1>
-        <form id="questionnaireForm" action="/Website/html/result_questionnaire.html" method="get">
-            <!-- Gender -->
+        <form id="questionnaireForm">
+            
+            <!-- Sleep Quality -->
             <div class="question-box">
-                <label for="gender">1. What is your gender?</label><br>
-                <select id="gender" name="gender" required>
-                    <option value="" disabled selected>Select your gender</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    <option value="Other">Other</option>
-                    <option value="Prefer not to say">Prefer not to say</option>
+                <label for="sleep_quality">1. How would you rate your sleep quality? (1 - Worst, 5 - Best)</label><br>
+                <select id="sleep_quality" name="sleep_quality" required>
+                    <option value="" disabled selected>Select a rating (1-5)</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select><br><br>
             </div>
 
-            <!-- Age -->
+            <!-- Academic Performance -->
             <div class="question-box">
-                <label for="age">2. What is your age?</label><br>
-                <select id="age" name="age" required>
-                    <option value="" disabled selected>Select your age</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Degree Level -->
-            <div class="question-box">
-                <label for="degree_level">3. What is your degree level?</label><br>
-                <select id="degree_level" name="degree_level" required>
-                    <option value="" disabled selected>Select your degree level</option>
-                    <option value="Undergraduate">Undergraduate</option>
-                    <option value="Postgraduate">Postgraduate</option>
-                    <option value="PhD">PhD</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Degree Major -->
-            <div class="question-box">
-                <label for="degree_major">4. What is your degree major?</label><br>
-                <select id="degree_major" name="degree_major" required>
-                    <option value="" disabled selected>Select your major</option>
-                    <option value="Data Science">Data Science</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Software Engineering">Software Engineering</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Academic Year -->
-            <div class="question-box">
-                <label for="academic_year">5. What is your current academic year?</label><br>
-                <select id="academic_year" name="academic_year" required>
-                    <option value="" disabled selected>Select your academic year</option>
-                    <option value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
-                    <option value="3rd Year">3rd Year</option>
-                    <option value="4th Year">4th Year</option>
-                    <option value="Other">Other</option>
-                </select><br><br>
-            </div>
-            
-            <!-- CGPA -->
-            <div class="question-box">
-                <label for="cgpa">6. What is your CGPA (Cumulative Grade Point Average)?</label><br>
-                <select id="cgpa" name="cgpa" required>
-                    <option value="" disabled selected>Select your CGPA</option>
-                    <option value="0.0">0.0</option>
-                    <option value="0.5">0.5</option>
-                    <option value="1.0">1.0</option>
-                    <option value="1.5">1.5</option>
-                    <option value="2.0">2.0</option>
-                    <option value="2.5">2.5</option>
-                    <option value="3.0">3.0</option>
-                    <option value="3.5">3.5</option>
-                    <option value="4.0">4.0</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Residential Status -->
-            <div class="question-box">
-                <label for="residential_status">7. What is your residential status?</label><br>
-                <select id="residential_status" name="residential_status" required>
-                    <option value="" disabled selected>Select your residential status</option>
-                    <option value="On-Campus">On-Campus</option>
-                    <option value="Off-Campus">Off-Campus</option>
-                    <option value="With Parents">With Parents</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Campus Discrimination -->
-            <div class="question-box">
-                <label for="campus_discrimination">8. Have you experienced campus discrimination?</label><br>
-                <select id="campus_discrimination" name="campus_discrimination" required>
-                    <option value="" disabled selected>Select your response</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Sports Engagement -->
-            <div class="question-box">
-                <label for="sports_engagement">9. How many times are you engaged in sports monthly?</label><br>
-                <select id="sports_engagement" name="sports_engagement" required>
-                    <option value="" disabled selected>Select frequency</option>
-                    <option value="None">None</option>
+                <label for="academic_performance">2. How would you rate your academic performance? (1 - Worst, 5 - Best)</label><br>
+                <select id="academic_performance" name="academic_performance" required>
+                    <option value="" disabled selected>Select a rating (1-5)</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="7+">7+</option>
                 </select><br><br>
             </div>
             
-            <!-- Average Sleep -->
+            <!-- Study Load -->
             <div class="question-box">
-                <label for="average_sleep">10. What is your average sleep duration per day (in hours)?</label><br>
-                <select id="average_sleep" name="average_sleep" required>
-                    <option value="" disabled selected>Select hours</option>
-                    <option value="0">0</option>
+                <label for="study_load">3. How would you rate your study load? (1 - Worst, 5 - Best)</label><br>
+                <select id="study_load" name="study_load" required>
+                    <option value="" disabled selected>Select a rating (1-5)</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="12+">12+</option>
                 </select><br><br>
             </div>
             
-            <!-- Study Satisfaction -->
+            <!-- Extracurricular Activities -->
             <div class="question-box">
-                <label for="study_satisfaction">11. How satisfied are you with your studies? (Scale 1-10)</label><br>
-                <select id="study_satisfaction" name="study_satisfaction" required>
-                    <option value="" disabled selected>Select a value (1-10)</option>
+                <label for="extracurricular_activities">4. How would you rate your engagement in extracurricular activities? (1 - Worst, 5 - Best)</label><br>
+                <select id="extracurricular_activities" name="extracurricular_activities" required>
+                    <option value="" disabled selected>Select a rating (1-5)</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Academic Workload -->
-            <div class="question-box">
-                <label for="academic_workload">12. How do you rate your academic workload?</label><br>
-                <select id="academic_workload" name="academic_workload" required>
-                    <option value="" disabled selected>Select your workload</option>
-                    <option value="Light">Light</option>
-                    <option value="Moderate">Moderate</option>
-                    <option value="Heavy">Heavy</option>
-                </select><br><br>
-            </div>
-            
-            <!-- Academic Pressure -->
-            <div class="question-box">
-                <label for="academic_pressure">13. How much academic pressure do you feel? (Scale 1-10)</label><br>
-                <select id="academic_pressure" name="academic_pressure" required>
-                    <option value="" disabled selected>Select a value (1-10)</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
                 </select><br><br>
             </div>
             
             <input type="submit" value="Submit">
         </form>
     </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('questionnaireForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const formData = {
+                sleep_quality: document.getElementById('sleep_quality').value,
+                academic_performance: document.getElementById('academic_performance').value,
+                study_load: document.getElementById('study_load').value,
+                extracurricular_activities: document.getElementById('extracurricular_activities').value
+            };
+
+            // Save form data to localStorage
+            localStorage.setItem('formData', JSON.stringify(formData));
+
+            // Redirect to the result page
+            window.location.href = '/Website/html/result_questionnaire.html';
+        });
+    </script>
 </body>
 </html>
