@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="/Website/css/signup.css"> <!-- Link to your stylesheet -->
+    <link rel="stylesheet" href="/Website/css/signup.css">
 </head>
 <body>
     <div class="login-container">
         <h2>Sign Up</h2>
-        <form action="signup_action.php" method="post"> <!-- Replace with your processing file if needed -->
+        <form id="signupForm">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
@@ -25,12 +25,12 @@
             <button type="submit">Sign Up</button>
         </form>
 
-        <!-- Link to go back to the login page -->
         <div class="signup-container">
             <p>Already have an account?</p>
             <button onclick="location.href='login.html'">Login</button>
         </div>
     </div>
+
     <div class="navbar">
         <button class="no-hover">Proof by Unpublished Paper</button>
         <div class="right-buttons">
@@ -40,9 +40,68 @@
             <button onclick="location.href='history_tracker.html'">History Tracker</button>
             <button onclick="location.href='math_model.html'">Math Model</button>
             <button onclick="location.href='contact.html'">Contact Us</button>
-            <button class="login-button" onclick="location.href='login.html'">Login</button>
-        </div>
+         </div>
     </div>
-</div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDcuafGs8GQeW0yR72Xd_EGmCF8mNUXxtM",
+            authDomain: "nathack2024.firebaseapp.com",
+            projectId: "nathack2024",
+            storageBucket: "nathack2024.firebasestorage.app",
+            messagingSenderId: "832945385242",
+            appId: "1:832945385242:web:97ce2f0c2625cf8b2186a3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginButtons = document.querySelectorAll('.login-button');
+
+        onAuthStateChanged(auth, (user) => {
+            loginButtons.forEach((button) => {
+                if (user) {
+                    button.textContent = "Logined";
+                    button.style.backgroundColor = "#8cc63f";
+                    button.onclick = async () => {
+                        await signOut(auth);
+                        alert("Logged out successfully!");
+                        button.textContent = "Login";
+                        button.style.backgroundColor = "";
+                        window.location.href = "login.html"; // Redirect to login page
+                    };
+                } else {
+                    button.textContent = "Login";
+                    button.onclick = () => window.location.href = "login.html";
+                }
+            });
+        });
+
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const username = document.getElementById('username').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                alert(`Sign up successful! Welcome, ${username}! Redirecting...`);
+                window.location.href = "main_page.html"; // Redirect after sign-up
+            } catch (error) {
+                alert(`Sign up failed: ${error.message}`);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -18,23 +18,24 @@ body {
     background-color: rgb(235, 239, 235);
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Ensure stacking direction */
-    padding-top: 80px; /* Add padding equal to the navbar's height */
+    flex-direction: column;
+    padding-top: 80px; /* Offset for the navbar */
     height: 100vh;
 }
 
+/* Navbar styling */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: var(--grey-green);
     display: flex;
-    justify-content: space-between; /* Space between left and right items */
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 60px; /* Define height for navbar */
+    height: 60px;
 }
 
 .navbar .no-hover {
@@ -43,18 +44,18 @@ body {
     color: var(--light-green);
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    cursor: default; /* Arrow cursor to indicate no interaction */
+    cursor: default;
 }
 
 .navbar .no-hover:hover {
-    background-color: initial; /* No background change on hover */
-    color: var(--light-green); /* Retain the default color */
+    background-color: initial;
+    color: var(--light-green);
 }
 
 .navbar .right-buttons {
     display: flex;
-    justify-content: flex-end; /* Push buttons to the right */
-    gap: 1rem; /* Space between buttons */
+    justify-content: flex-end;
+    gap: 1rem;
 }
 
 .navbar .right-buttons button {
@@ -68,27 +69,27 @@ body {
 }
 
 .navbar .right-buttons button:hover {
-    background-color: var(--light-green); /* Change background on hover */
-    color:var(--grey-green);
+    background-color: var(--light-green);
+    color: white;
 }
 
-/* Login button styling */
 .navbar .right-buttons .login-button {
     background-color: var(--light-green);
     color: var(--grey-green);
-    border-radius: 500px;
+    border-radius: 5px;
     padding: 0.5rem 1.5rem;
+    cursor: pointer;
 }
 
 .navbar .right-buttons .login-button:hover {
     background-color: var(--ivory-green);
-    color:var(--grey-green);
+    color: white;
 }
 
+/* Sign-Up form container */
 .login-container {
     max-width: 600px;
-    margin: 120px auto; /* Existing margin */
-    margin-top: 200px; /* Adjusted to account for the navbar */
+    margin: 120px auto; /* Centered below navbar */
     padding: 30px;
     border: 2px solid var(--grey-green);
     border-radius: 10px;
@@ -97,23 +98,22 @@ body {
     text-align: center;
 }
 
-
 /* Sign-Up form heading */
 .login-container h2 {
     margin-bottom: 25px;
     color: var(--grey-green);
-    font-size: 5rem;
+    font-size: 2.5rem;
 }
 
-/* Sign-Up form labels */
+/* Form labels */
 .login-container label {
     display: block;
     margin-top: 20px;
     color: var(--grey-green);
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
-/* Sign-Up form inputs */
+/* Form inputs */
 .login-container input {
     width: 100%;
     padding: 12px;
@@ -139,16 +139,17 @@ body {
 
 .login-container button:hover {
     background-color: var(--grey-green);
+    color: white;
 }
 
-/* Login link section below the sign-up form */
+/* Redirect section below the form */
 .signup-container {
     margin-top: 20px;
     text-align: center;
 }
 
 .signup-container p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--grey-green);
 }
 
@@ -159,11 +160,12 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--grey-green);
     transition: background-color 0.3s;
 }
 
 .signup-container button:hover {
     background-color: var(--grey-green);
+    color: white;
 }

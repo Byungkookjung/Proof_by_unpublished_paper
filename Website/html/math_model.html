@@ -17,9 +17,52 @@
             <button onclick="location.href='history_tracker.html'">History Tracker</button>
             <button onclick="location.href='math_model.html'">Math Model</button>
             <button onclick="location.href='contact.html'">Contact Us</button>
-            <button class="login-button" onclick="location.href='login.html'">Login</button>
+            <button class="login-button">Login</button>
         </div>
     </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDcuafGs8GQeW0yR72Xd_EGmCF8mNUXxtM",
+            authDomain: "nathack2024.firebaseapp.com",
+            projectId: "nathack2024",
+            storageBucket: "nathack2024.firebasestorage.app",
+            messagingSenderId: "832945385242",
+            appId: "1:832945385242:web:97ce2f0c2625cf8b2186a3"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Select the login button
+        const loginButton = document.querySelector('.login-button');
+    
+        // Update the login button based on authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is logged in
+                loginButton.textContent = "Logined";
+                loginButton.style.backgroundColor = "#f6f4d2";
+                loginButton.onclick = async () => {
+                    await signOut(auth);
+                    alert("Logged out successfully!");
+                    loginButton.textContent = "Login";
+                    loginButton.style.backgroundColor = "";
+                    window.location.href = "login.html"; // Redirect to login page
+                };
+            } else {
+                // User is not logged in
+                loginButton.textContent = "Login";
+                loginButton.onclick = () => window.location.href = "login.html";
+            }
+        });
+    </script>
+    
     <div class="main-container">
         <!-- Title Section -->
         <div class="title-container">

@@ -9,9 +9,9 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login_action.php" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
@@ -19,12 +19,12 @@
             <button type="submit">Login</button>
         </form>
         
-        <!-- Sign Up Section -->
         <div class="signup-container">
             <p>Don't have an account?</p>
             <button onclick="location.href='signup.html'">Sign Up</button>
         </div>
     </div>
+
     <div class="navbar">
         <button class="no-hover">Proof by Unpublished Paper</button>
         <div class="right-buttons">
@@ -34,8 +34,103 @@
             <button onclick="location.href='history_tracker.html'">History Tracker</button>
             <button onclick="location.href='math_model.html'">Math Model</button>
             <button onclick="location.href='contact.html'">Contact Us</button>
-            <button class="login-button" onclick="location.href='login.html'">Login</button>
         </div>
     </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDcuafGs8GQeW0yR72Xd_EGmCF8mNUXxtM",
+            authDomain: "nathack2024.firebaseapp.com",
+            projectId: "nathack2024",
+            storageBucket: "nathack2024.firebasestorage.app",
+            messagingSenderId: "832945385242",
+            appId: "1:832945385242:web:97ce2f0c2625cf8b2186a3"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // Select the login button
+        const loginButton = document.querySelector('.login-button');
+    
+        // Update the login button based on authentication state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is logged in
+                loginButton.textContent = "Logined";
+                loginButton.style.backgroundColor = "#8cc63f";
+                loginButton.onclick = async () => {
+                    await signOut(auth);
+                    alert("Logged out successfully!");
+                    loginButton.textContent = "Login";
+                    loginButton.style.backgroundColor = "";
+                    window.location.href = "login.html"; // Redirect to login page
+                };
+            } else {
+                // User is not logged in
+                loginButton.textContent = "Login";
+                loginButton.onclick = () => window.location.href = "login.html";
+            }
+        });
+    </script>
+    
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDcuafGs8GQeW0yR72Xd_EGmCF8mNUXxtM",
+            authDomain: "nathack2024.firebaseapp.com",
+            projectId: "nathack2024",
+            storageBucket: "nathack2024.firebasestorage.app",
+            messagingSenderId: "832945385242",
+            appId: "1:832945385242:web:97ce2f0c2625cf8b2186a3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginButtons = document.querySelectorAll('.login-button');
+
+        onAuthStateChanged(auth, (user) => {
+            loginButtons.forEach((button) => {
+                if (user) {
+                    button.textContent = "Logined";
+                    button.style.backgroundColor = "#8cc63f";
+                    button.onclick = async () => {
+                        await signOut(auth);
+                        alert("Logged out successfully!");
+                        button.textContent = "Login";
+                        button.style.backgroundColor = "";
+                        window.location.href = "login.html"; // Redirect to login page
+                    };
+                } else {
+                    button.textContent = "Login";
+                    button.onclick = () => window.location.href = "login.html";
+                }
+            });
+        });
+
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful! Redirecting...");
+                window.location.href = "main_page.html";
+            } catch (error) {
+                alert(`Login failed: ${error.message}`);
+            }
+        });
+    </script>
 </body>
 </html>
