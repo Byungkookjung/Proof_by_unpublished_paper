@@ -1,0 +1,45 @@
+# Install and load required packages
+install.packages("glmnet")
+install.packages("caTools")
+library(glmnet)
+library(caTools)
+
+# Load the data
+data <- read.csv("Student_Stress_Factors.csv")
+
+# Rename columns for clarity
+colnames(data) <- c("Sleep_Quality", "Headaches_Per_Week", "Academic_Performance", 
+                    "Study_Load", "Extracurricular_Activities", "Stress_Levels")
+
+# Set a random seed for reproducibility
+set.seed(123)
+
+# Split the data: 70% training and 30% testing
+split <- sample.split(data$Stress_Levels, SplitRatio = 0.7)
+train_data <- subset(data, split == TRUE)
+test_data <- subset(data, split == FALSE)
+
+# Prepare input and output matrices for training and testing
+X_train <- as.matrix(train_data[, c("Sleep_Quality", "Academic_Performance", "Study_Load", "Extracurricular_Activities")])
+Y_train <- as.matrix(train_data[, c("Stress_Levels", "Headaches_Per_Week")])
+X_test <- as.matrix(test_data[, c("Sleep_Quality", "Academic_Performance", "Study_Load", "Extracurricular_Activities")])
+Y_test <- as.matrix(test_data[, c("Stress_Levels", "Headaches_Per_Week")])
+
+# Perform cross-validation on the training set to find the best lambda
+cv_model <- cv.glmnet(X_train, Y_train, family = "mgaussian")
+
+# Get the optimal lambda value
+best_lambda <- cv_model$lambda.min
+cat("Best Lambda: ", best_lambda, "\n")
+
+# Fit the model using the optimal lambda
+final_model <- glmnet(X_train, Y_train, family = "mgaussian", lambda = best_lambda)
+
+# Predict on the test set
+Y_pred <- predict(final_model, newx = X_test)
+
+# Evaluate model performance on the test set (e.g., Mean Squared Error)
+mse <- colMeans((Y_test - Y_pred)^2)
+cat("Mean Squared Error for Stress_Levels:", mse["Stress_Levels"], "\n")
+cat("Mean Squared Error for Headaches_Per_Week:", mse["Headaches_Per_Week"], "\n")
+

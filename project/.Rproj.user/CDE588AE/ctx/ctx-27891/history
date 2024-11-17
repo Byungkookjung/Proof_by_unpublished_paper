@@ -1,0 +1,162 @@
+data <- read.csv("MentalHealthSurvey.csv")
+head(data)
+model <- lm(depression ~ gender + academic_year + cgpa + residential_status +
+campus_discrimination + sports_engagement + average_sleep +
+Academic_Workload + Academic_Pressure, data = data)
+model <- lm(depression ~ gender + academic_year + cgpa + residential_status +
+campus_discrimination + sports_engagement + average_sleep +
+academic_workload  + Academic_Pressure, data = data)
+model <- lm(depression ~ gender + academic_year + cgpa + residential_status +
+campus_discrimination + sports_engagement + average_sleep +
+academic_workload  + academic_pressure, data = data)
+summary(model)
+model <- lm(anxiety ~ gender + academic_year + cgpa + residential_status +
+campus_discrimination + sports_engagement + average_sleep +
+academic_workload  + academic_pressure, data = data)
+summary(model)
+model <- lm(isolation ~ gender + academic_year + cgpa + residential_status +
+campus_discrimination + sports_engagement + average_sleep +
+academic_workload  + academic_pressure, data = data)
+summary(model)
+model <- lm(depression ~ gender , data = data)
+summary(model)
+model <- lm(depression ~ academic_year  , data = data)
+summary(model)
+model <- lm(depression ~ cgpa  , data = data)
+summary(model)
+model <- lm(depression ~ residential_status  , data = data)
+summary(model)
+model <- lm(depression ~ campus_discrimination  , data = data)
+summary(model)
+model <- lm(depression ~ sports_engagement  , data = data)
+summary(model)
+model <- lm(depression ~ average_sleep  , data = data)
+summary(model)
+data <- read.csv("Student Stress Factors.csv")
+head(data)
+str(data)
+model <- lm(depression ~ gender + academic_year + cgpa + residential_status +
+campus_discrimination + sports_engagement + average_sleep +
+academic_workload  + academic_pressure, data = data)
+# Rename the columns
+colnames(data) <- c(
+"Sleep_Quality",
+"Headaches_Per_Week",
+"Academic_Performance",
+"Study_Load",
+"Extracurricular_Activities",
+"Stress_Levels"
+)
+# View the renamed columns
+colnames(data)
+# Perform the linear regression
+model <- lm(Stress_Levels ~ Sleep_Quality + Headaches_Per_Week + Academic_Performance + Study_Load + Extracurricular_Activities, data = data)
+# Display the summary of the regression model
+summary(model)
+# Perform the linear regression
+model <- lm(Stress_Levels ~ Sleep_Quality +  Academic_Performance + Study_Load + Extracurricular_Activities, data = data)
+# Display the summary of the regression model
+summary(model)
+model <- lm(Headaches_Per_Week ~ Sleep_Quality +  Academic_Performance + Study_Load + Extracurricular_Activities, data = data)
+# Display the summary of the regression model
+summary(model)
+model1 <- lm(Stress_Levels ~ Sleep_Quality, data = data)
+plot(data$Sleep_Quality, data$Stress_Levels,
+main = "Stress Levels vs Sleep Quality",
+xlab = "Sleep Quality",
+ylab = "Stress Levels",
+pch = 19, col = "blue")
+abline(model1, col = "red")  # Add regression line
+summary(model1)  # Display summary for model1
+model1 <- lm(Stress_Levels ~ Sleep_Quality, data = data)
+plot(data$Sleep_Quality, data$Stress_Levels,
+pch = 19, col = "blue")
+abline(model1, col = "red")  # Add regression line
+summary(model1)  # Display summary for model1
+model2 <- lm(Stress_Levels ~ Academic_Performance, data = data)
+plot(data$Academic_Performance, data$Stress_Levels,
+pch = 19, col = "blue")
+abline(model1, col = "red")
+summary(model2)
+model1 <- lm(Stress_Levels ~ Sleep_Quality, data = data)
+plot(data$Sleep_Quality, data$Stress_Levels,
+pch = 19, col = "blue")
+abline(model1, col = "red")
+summary(model1)
+# Rename the columns
+colnames(data) <- c(
+"Sleep_Quality",
+"Headaches_Per_Week",
+"Academic_Performance",
+"Study_Load",
+"Extracurricular_Activities",
+"Stress_Levels"
+)
+model <- lm(Stress_Levels ~ Sleep_Quality +  Academic_Performance + Study_Load + Extracurricular_Activities, data = data)
+model <- lm(Headaches_Per_Week ~ Sleep_Quality +  Academic_Performance + Study_Load + Extracurricular_Activities, data = data)
+# Define the input matrix (independent variables) and output matrix (dependent variables)
+X <- as.matrix(data[, c("Sleep_Quality", "Academic_Performance", "Study_Load", "Extracurricular_Activities")])
+Y <- as.matrix(data[, c("Stress_Levels", "Headaches_Per_Week")])
+# Fit the multivariate regression model
+model <- glmnet(X, Y, family = "mgaussian")  # 'mgaussian' for multivariate outputs
+library(glmnet)
+library(glmnet)
+library(glmnet)
+library(glmnet)
+install.packages("glmnet")
+# Display model coefficients
+coef(model)
+summary(model)
+# Define the input matrix (independent variables) and output matrix (dependent variables)
+X <- as.matrix(data[, c("Sleep_Quality", "Academic_Performance", "Study_Load", "Extracurricular_Activities")])
+Y <- as.matrix(data[, c("Stress_Levels", "Headaches_Per_Week")])
+# Fit the multivariate regression model
+model <- glmnet(X, Y, family = "mgaussian")  # 'mgaussian' for multivariate outputs
+library(glmnet)
+X <- as.matrix(data[, c("Sleep_Quality", "Academic_Performance", "Study_Load", "Extracurricular_Activities")])
+Y <- as.matrix(data[, c("Stress_Levels", "Headaches_Per_Week")])
+# Fit the multivariate regression model
+model <- glmnet(X, Y, family = "mgaussian")  # 'mgaussian' for multivariate outputs
+# Display model coefficients
+summary(model)
+# Define the input matrix (independent variables) and output matrix (dependent variables)
+X <- as.matrix(data[, c("Sleep_Quality", "Academic_Performance", "Study_Load", "Extracurricular_Activities")])
+Y <- as.matrix(data[, c("Stress_Levels", "Headaches_Per_Week")])
+# Fit the multivariate regression model
+model <- glmnet(X, Y, family = "mgaussian")  # 'mgaussian' for multivariate outputs
+lambda_index <- 10  # Select the 10th lambda as an example (you can change this)
+coef_stress <- coef(model, s = model$lambda[lambda_index])[["Stress_Levels"]]
+coef_headaches <- coef(model, s = model$lambda[lambda_index])[["Headaches_Per_Week"]]
+# Display coefficients
+print("Coefficients for Stress Levels:")
+print(coef_stress)
+print("Coefficients for Headaches Per Week:")
+print(coef_headaches)
+# Display coefficients
+print("Coefficients for Stress Levels:")
+print(coef_stress)
+print("Coefficients for Headaches Per Week:")
+print(coef_headaches)
+# Set a random seed for reproducibility
+set.seed(123)
+# Split the data: 70% training and 30% testing
+split <- sample.split(data$Stress_Levels, SplitRatio = 0.7)
+install.packages("caTools")
+library(caTools)
+# Set a random seed for reproducibility
+set.seed(123)
+# Split the data: 70% training and 30% testing
+split <- sample.split(data$Stress_Levels, SplitRatio = 0.7)
+# Create training and test sets
+train_data <- subset(data, split == TRUE)
+test_data <- subset(data, split == FALSE)
+# Check the dimensions of the training and test sets
+dim(train_data)
+dim(test_data)
+# Install and load required packages
+install.packages("glmnet")
+install.packages("caTools")
+library(glmnet)
+library(caTools)
+# Load the data
+data <- read.csv("Student_Stress_Factors.csv")
