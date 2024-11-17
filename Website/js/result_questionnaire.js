@@ -1,43 +1,41 @@
-// Retrieve data from localStorage
-const formData = JSON.parse(localStorage.getItem('formData'));
+// Load and process the CSV file
+d3.csv('/project/Prediction_Output.csv').then(function (data) {
+    console.log('Loaded data:', data);
 
-// Populate table with user data
-const resultTableBody = document.getElementById('resultTableBody');
-if (formData) {
-    const questions = [
-        "1. How would you rate your sleep quality? (1 - Worst, 5 - Best)",
-        "2. How would you rate your academic performance? (1 - Worst, 5 - Best)",
-        "3. How would you rate your study load? (1 - Worst, 5 - Best)",
-        "4. How would you rate your engagement in extracurricular activities? (1 - Worst, 5 - Best)"
-    ];
+    if (data.length === 0) {
+        document.getElementById('output').textContent = 'No data found in the CSV file.';
+        return;
+    }
 
-    const answers = [
-        formData.sleep_quality,
-        formData.academic_performance,
-        formData.study_load,
-        formData.extracurricular_activities
-    ];
+    // Extract values
+    const stressValues = data.map(row => {
+        return row.Predicted_Stress_Level !== undefined ? parseFloat(row.Predicted_Stress_Level) : null;
+    }).filter(value => value !== null);
 
-    questions.forEach((question, index) => {
-        const row = document.createElement('tr');
-        const questionCell = document.createElement('td');
-        questionCell.textContent = question;
-        const answerCell = document.createElement('td');
-        answerCell.textContent = answers[index] || 'No answer';
-        row.appendChild(questionCell);
-        row.appendChild(answerCell);
-        resultTableBody.appendChild(row);
-    });
-} else {
-    // Handle case where no data is available
-    document.querySelector('.result-container').innerHTML = "<p>No data found. Please fill out the questionnaire first.</p>";
-}
+    const headacheProbabilities = data.map(row => {
+        return row.Predicted_Headaches_Per_Week_Probability !== undefined ? parseFloat(row.Predicted_Headaches_Per_Week_Probability) : null;
+    }).filter(value => value !== null);
 
+    // Use the first value for demonstration purposes
+    if (stressValues.length > 0) {
+        const outputStressLevel = stressValues[0]; // Taking the first stress value
+        displayStressLevel(outputStressLevel); // Pass this value to the display function
+    } else {
+        document.getElementById('stressLevelText').textContent = 'No valid Predicted Stress Level data available.';
+    }
 
+    if (headacheProbabilities.length > 0) {
+        const outputHeadacheProbability = headacheProbabilities[0]; // Taking the first headache probability
+        animateProgress(outputHeadacheProbability); // Pass this value to the animate function
+    } else {
+        document.getElementById('progressValue').textContent = 'No valid headache data available.';
+    }
+}).catch(function (error) {
+    console.error('Error loading CSV:', error);
+    document.getElementById('output').textContent = 'Failed to load data. Check the console for more details.';
+});
 
-
-
-// progress bar
+// Function to animate progress circle
 function animateProgress(targetPercent) {
     const circle = document.querySelector('.progress-ring__circle');
     const radius = circle.r.baseVal.value;
@@ -48,7 +46,7 @@ function animateProgress(targetPercent) {
 
     let currentPercent = 0;
     const progressValue = document.getElementById('progressValue');
-    
+
     // Animation interval
     const interval = setInterval(() => {
         if (currentPercent >= targetPercent) {
@@ -64,10 +62,7 @@ function animateProgress(targetPercent) {
     }, 50); // Adjust the interval timing to control animation speed
 }
 
-// Example usage: Animate progress to 70%
-animateProgress(70);
-
-
+// Function to display stress level bar
 function displayStressLevel(targetLevel) {
     const maxStressLevel = 5; // Maximum value for stress level
     const indicator = document.getElementById('stressLevelIndicator');
@@ -89,9 +84,3 @@ function displayStressLevel(targetLevel) {
         text.textContent = `Stress Level: ${currentLevel.toFixed(2)}/${maxStressLevel}`; // Display up to two decimals
     }, 20); // Reduced interval time for faster transition
 }
-
-// Example usage: Display stress level 4.44 with transition
-displayStressLevel(4.44);
-
-
-
