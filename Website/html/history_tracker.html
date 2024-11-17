@@ -45,7 +45,7 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 // User is logged in
-                loginButton.textContent = "Logined";
+                loginButton.textContent = "Logged in";
                 loginButton.style.backgroundColor = "#f6f4d2";
                 loginButton.onclick = async () => {
                     await signOut(auth);
