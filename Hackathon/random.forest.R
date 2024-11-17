@@ -45,7 +45,7 @@ random.forest <- function(input_vector) {
   # Return predictions as a list
   return(list(
     Predicted_Stress_Levels = Stress_Levels_pred_new,
-    Predicted_Headaches_Per_Week_Probability = Headaches_Per_Week_pred_new
+    Predicted_Headaches_Per_Week_Probability = Headaches_Per_Week_pred_new/4 * 100
   ))
 }
 

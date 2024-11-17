@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Model Regression - Title and Description</title>
-    <!-- Link to external CSS if needed, or include it here -->
+    <title>Math Model: Random Forests</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Optional: Link to external CSS for styling -->
     <link rel="stylesheet" href="/Website/css/math_model_regression.css">
+    <style>
+        .title-container h1 {
+            font-size: 2.5em; /* Increased font size for the title */
+        }
+        .math-expression p, .math-expression ul {
+            font-size: 1.2em; /* Increased font size for the text in the "Where:" section */
+            color: black;
+        }
+        li {
+            margin-left: 30px;
+        }
+
+        #visit-title {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -18,79 +37,36 @@
             <button class="login-button">Login</button>
         </div>
     </div>
-    
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-    
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDcuafGs8GQeW0yR72Xd_EGmCF8mNUXxtM",
-            authDomain: "nathack2024.firebaseapp.com",
-            projectId: "nathack2024",
-            storageBucket: "nathack2024.firebasestorage.app",
-            messagingSenderId: "832945385242",
-            appId: "1:832945385242:web:97ce2f0c2625cf8b2186a3"
-        };
-    
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-    
-        // Select the login button
-        const loginButton = document.querySelector('.login-button');
-    
-        // Update the login button based on authentication state
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is logged in
-                loginButton.textContent = "Logged in";
-                loginButton.style.backgroundColor = "#f6f4d2";
-                loginButton.onclick = async () => {
-                    await signOut(auth);
-                    alert("Logged out successfully!");
-                    loginButton.textContent = "Login";
-                    loginButton.style.backgroundColor = "";
-                    window.location.href = "login.html"; // Redirect to login page
-                };
-            } else {
-                // User is not logged in
-                loginButton.textContent = "Login";
-                loginButton.onclick = () => window.location.href = "login.html";
-            }
-        });
-    </script>
-    
+
     <div class="main-container">
         <!-- Title Section -->
         <div class="title-container">
-            <h1>Math Model Regression</h1>
-            <p>A detailed explanation and calculation tool for linear regression models.</p>
+            <h1>Math Model Random Forests</h1>
+
+            <!-- Mathematical Expression Section -->
+            <div class="math-expression">
+                <p style="font-weight: bold; font-size: 2.5em; text-align: center;">
+                    $$ \hat{f(x)} = \sum_{i=1}^{n} c_i \cdot \mathbf{1}(x \in B_i) $$
+                </p>
+                <p style="font-size: 1.5em;">Where:</p>
+                <ul>
+                    <li><strong>x</strong> is the input feature vector.</li>
+                    <li><strong>n</strong> is the number of terminal nodes (leaf nodes) in the tree. In our model, we set n = 1000.</li> 
+                    <li><strong>c<sub>i</sub></strong> is the prediction value (output) associated with the <em>i</em>-th leaf node.</li>
+                    <li><strong>B<sub>i</sub></strong> is the disjoint region (box) in the feature space corresponding to the <em>i</em>-th leaf node.</li>
+                    <li><strong>1(x ∈ B<sub>i</sub>)</strong> is the indicator function, which equals 1 if <strong>x</strong> belongs to <strong>B<sub>i</sub></strong>, and 0 otherwise.</li>
+                </ul>
+                <h3 id="visit-title">Visit the Database Documentation</h3>
+                <p>Click the link below to access the database:</p>
+                <a href="https://www.kaggle.com/datasets/samyakb/student-stress-factors" target="_blank">Go to the Database</a> <!-- Replace with your actual URL -->
+
         </div>
 
-        <!-- Description Section -->
-        <div class="description-container">
-            <h2>Description</h2>
-            <p>
-                This page provides an overview and calculator for simple linear regression models. Linear regression is 
-                used to find the relationship between a dependent variable (y) and one or more independent variables (x). 
-                It aims to find a linear equation in the form:
-            </p>
-            <p style="font-style: italic; font-weight: bold;">y = mx + b</p>
-            <p>
-                where:
-                <ul>
-                    <li><strong>y</strong>: The dependent variable (outcome).</li>
-                    <li><strong>x</strong>: The independent variable (predictor).</li>
-                    <li><strong>m</strong>: Slope of the line (rate of change).</li>
-                    <li><strong>b</strong>: Intercept (constant term).</li>
-                </ul>
-            </p>
-            <p>
-                Enter values in the input fields below to perform your own regression analysis, and view the results in 
-                the graph and result sections.
-            </p>
-        </div>
+        
+
+    
+
+
     </div>
 </body>
 </html>

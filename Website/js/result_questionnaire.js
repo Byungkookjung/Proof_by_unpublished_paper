@@ -1,38 +1,30 @@
-// Load and process the CSV file
-d3.csv('/project/Prediction_Output.csv').then(function (data) {
-    console.log('Loaded data:', data);
+document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve the data from localStorage
+    const apiResponse = localStorage.getItem('apiResponse');
 
-    if (data.length === 0) {
-        document.getElementById('output').textContent = 'No data found in the CSV file.';
+    if (!apiResponse) {
+        console.error('No API response found in localStorage.');
+        document.getElementById('output').textContent = 'No data available. Please complete the questionnaire first.';
         return;
     }
 
-    // Extract values
-    const stressValues = data.map(row => {
-        return row.Predicted_Stress_Level !== undefined ? parseFloat(row.Predicted_Stress_Level) : null;
-    }).filter(value => value !== null);
+    // Parse the response data
+    const responseData = JSON.parse(apiResponse);
 
-    const headacheProbabilities = data.map(row => {
-        return row.Predicted_Headaches_Per_Week_Probability !== undefined ? parseFloat(row.Predicted_Headaches_Per_Week_Probability) : null;
-    }).filter(value => value !== null);
-
-    // Use the first value for demonstration purposes
-    if (stressValues.length > 0) {
-        const outputStressLevel = stressValues[0]; // Taking the first stress value
-        displayStressLevel(outputStressLevel); // Pass this value to the display function
+    // Display the data
+    if (responseData.Predicted_Stress_Levels !== undefined) {
+        const stressLevel = responseData.Predicted_Stress_Levels;
+        displayStressLevel(stressLevel); // Assuming this function is defined to display stress level
     } else {
         document.getElementById('stressLevelText').textContent = 'No valid Predicted Stress Level data available.';
     }
 
-    if (headacheProbabilities.length > 0) {
-        const outputHeadacheProbability = headacheProbabilities[0]; // Taking the first headache probability
-        animateProgress(outputHeadacheProbability); // Pass this value to the animate function
+    if (responseData.Predicted_Headaches_Per_Week_Probability !== undefined) {
+        const headacheProbability = responseData.Predicted_Headaches_Per_Week_Probability;
+        animateProgress(headacheProbability); // Assuming this function is defined to animate progress
     } else {
         document.getElementById('progressValue').textContent = 'No valid headache data available.';
     }
-}).catch(function (error) {
-    console.error('Error loading CSV:', error);
-    document.getElementById('output').textContent = 'Failed to load data. Check the console for more details.';
 });
 
 // Function to animate progress circle

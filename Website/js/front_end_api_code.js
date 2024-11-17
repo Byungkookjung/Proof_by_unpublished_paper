@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('questionnaireForm');
-    
+
     if (!form) {
         console.error('Form element with id="questionnaireForm" not found!');
         return;
@@ -41,7 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Handling the response
             if (response.ok) {
                 const result = await response.json(); // Assuming your API responds with JSON
-                document.getElementById('results').innerText = `API Response: ${JSON.stringify(result)}`;
+                // Save result to localStorage
+                localStorage.setItem('apiResponse', JSON.stringify(result));
+                // Navigate to the result page
+                window.location.href = 'result_questionnaire.html';
             } else {
                 document.getElementById('results').innerText = `Error communicating with the API. Status: ${response.status}, Message: ${response.statusText}`;
             }
@@ -51,5 +54,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
