@@ -1,9 +1,10 @@
-import { db } from './firebaseConfig.js';
+// Import necessary Firebase functions
+import { db } from './firebaseConfig.js'; // Import the initialized Firestore instance
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Function to handle form submission and save data to Firestore
-function handleQuestionnaireForm(event) {
-    event.preventDefault(); // Prevent the default form submission
+// Function to handle form submission and store data in Firestore
+async function handleQuestionnaireForm(event) {
+    event.preventDefault(); // Prevent default form submission
 
     // Collect form data
     const formData = {
@@ -13,22 +14,26 @@ function handleQuestionnaireForm(event) {
         extracurricular_activities: document.getElementById('extracurricular_activities').value
     };
 
-    // Save form data to Firestore
-    addDoc(collection(db, "questionnaireResponses"), formData)
-        .then(() => {
-            alert('Data submitted successfully!');
-            window.location.href = '/Website/html/result_questionnaire.html'; // Redirect to result page
-        })
-        .catch((error) => {
-            console.error('Error saving data:', error);
-            alert('Error submitting data. Please try again.');
-        });
+    console.log('Collected form data:', formData); // Debugging output
+
+    try {
+        // Store formData in Firestore
+        await addDoc(collection(db, "questionnaireResponses"), formData);
+        alert('Form submitted successfully! Data saved to Firebase.');
+        // Redirect or perform another action after saving
+        window.location.href = 'result_questionnaire.html'; // Change this path as needed
+    } catch (error) {
+        console.error('Error saving form data to Firebase:', error);
+        alert('Error during form submission. Please try again.');
+    }
 }
 
-// Add event listener to form on page load
+// Add event listener to the form
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('questionnaireForm');
     if (form) {
         form.addEventListener('submit', handleQuestionnaireForm);
+    } else {
+        console.error('Questionnaire form not found.');
     }
 });
