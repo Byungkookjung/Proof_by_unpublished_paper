@@ -19,7 +19,11 @@ async function handleQuestionnaireForm(event) {
     try {
         // Store formData in Firestore
         await addDoc(collection(db, "questionnaireResponses"), formData);
-        alert('Form submitted successfully! Data saved to Firebase.');
+
+        // Save data to localStorage for retrieval on the results page
+        localStorage.setItem('formData', JSON.stringify(formData));
+
+        alert('Form submitted successfully! Data saved to Firebase and localStorage.');
         // Redirect or perform another action after saving
         window.location.href = 'result_questionnaire.html'; // Change this path as needed
     } catch (error) {
